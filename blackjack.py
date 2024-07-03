@@ -2,12 +2,23 @@ import random
 from blackjack_art import logo
 
 
+def renew_deck():  # Function to renew the deck
+    global cards
+    cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11, 2, 3, 4, 5, 6,
+     7, 8, 9, 10, 10, 10, 10, 11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]  # List of cards in the deck
+
+
+
+
+
 def deal_card():  # Function to deal a card from the deck
     """Returns a random card from the deck."""
-    cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]  # List of cards in the deck
+    print("The deck is: ", cards)
     #11 is the Ace card which can be 1 or 11, 10 is the face card which is 10. The rest three 10s
     #are for the three face cards: Jack, Queen, and King.
-    return random.choice(cards)
+    my_card = random.choice(cards)  # Randomly choosing a card from the deck
+    cards.remove(my_card)   # Removing the chosen card from the deck
+    return my_card
 
 
 def calculate_score(cards):
@@ -39,6 +50,7 @@ def compare(user_score, computer_score):    # Function to compare the user_score
 
 
 def play_game():
+    renew_deck()
     """Play the game of Blackjack."""
     print(logo)
     is_game_over = False
